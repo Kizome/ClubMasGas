@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{this.mode}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <ion-item lines="full">
+      <ion-label position="floating">Cilindrada</ion-label>
+      <ion-input type="number" formControlName="cilindrada"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Color</ion-label>
+      <ion-input type="text" formControlName="color"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Marca</ion-label>
+      <ion-input type="text" formControlName="marca"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Modelo</ion-label>
+      <ion-input type="text" formControlName="modelo"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-input type="text" formControlName="tipo"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Imagen</ion-label>
+      <ion-img [src]='fotoService.getImagen()'></ion-img>
+    </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="takePhoto()">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="choosePhoto()">
+        <ion-icon name="image-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [disabled]="!this.form.valid" type="submit" color="primary" expand="block">Registrar moto</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
